@@ -11,3 +11,6 @@ Traefik Cheating in Writing Configuration Files
 - We use dynamic configuration for containers that are intended to connect to traefik
 - Inspect the parameters of the file precisely
 
+## Running Whoami Test Containter
+- Run `` whoami `` service with `` docker-compose up -d ``
+- But before it you should run traefik with docker-compose
