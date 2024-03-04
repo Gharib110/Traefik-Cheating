@@ -6,7 +6,7 @@ Traefik Cheating in Writing Configuration Files
 ## Traefik Static Configuration with File
 - traefik.yml
 - Three modes available for static configurations: ENV Vars, File, CMD Args
-- I Love files!
+- I Love files! So I choose File mode
 - The following file configures traefik systematically!
 - We use dynamic configuration for containers that are intended to connect to traefik
 - Inspect the parameters of the file precisely
