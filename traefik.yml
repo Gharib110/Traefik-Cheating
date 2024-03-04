@@ -105,7 +105,7 @@ api:
   # Optional
   # Default: false
   #
-  insecure: true
+  insecure: true # It is not secure but before make it false we should enable tls. Until then use localhost for it
 
   # Enabled Dashboard
   #
