@@ -154,4 +154,4 @@ providers:
     # Optional
     # Default: true
     #
-    exposedByDefault: true
+    exposedByDefault: true # Typically we enable a service in docker-compose file to expose
