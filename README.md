@@ -7,10 +7,17 @@ Traefik Cheating in Writing Configuration Files
 - traefik.yml
 - Three modes available for static configurations: ENV Vars, File, CMD Args
 - I Love files! So I choose File mode
-- The following file configures traefik systematically!
+- The `` traefik.yml `` configures traefik systematically!
 - We use dynamic configuration for containers that are intended to connect to traefik
 - Inspect the parameters of the file precisely
+
+## Run Traefik
+- Traefik supports multiple providers like Nomad, File, Docker, Kubernetes ...
+- We use Docker along with Docker Swarm for scaling'
+- run its docker-compose file
 
 ## Running Whoami Test Containter
 - Run `` whoami `` service with `` docker-compose up -d ``
 - But before it you should run traefik with docker-compose
+- This is just a sample container which helps us to test the traefik well
+- Just Run the docker-compose, but before it edit the `` networks  `` section
