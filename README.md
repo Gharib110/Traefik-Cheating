@@ -24,4 +24,4 @@ Traefik Cheating in Writing Configuration Files
 
 ## User-Defined TLS
 - Use the traefik.tls.yml file and put it int othe `` /opt/traefik/dynamic ``. IT is mapped to `` /etc/traefik/dynamic `` in the docker container
-- Also 
+- You should use `` docker-compose.tls.whoami.yml `` to enable the tls for it
