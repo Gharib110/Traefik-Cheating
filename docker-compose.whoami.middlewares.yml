@@ -1,6 +1,14 @@
+version: '3'
 
+services:
+# Add the whoami service
+  whoami:
+     # A container that exposes an API to show its IP address
+     image: containous/whoami
+     # We set a label to tell Traefik to assign a hostname to the new service
+     labels:
        - "traefik.enable=true"
-  # Routers
+       # Routers
        - "traefik.http.routers.catapp.rule=Host(`<your-domain-here>`)"
        - "traefik.http.routers.catapp.entrypoints=web"
        - "traefik.http.routers.catapp.middlewares=test-redirectscheme"
@@ -8,26 +16,24 @@
        - "traefik.http.routers.catapp-secure.entrypoints=websecure"
        - "traefik.http.routers.catapp-secure.tls.certresolver=myresolver"
        - "traefik.http.routers.catapp-secure.middlewares=test-auth,test-compress,test-errorpages,test-ratelimit"
-  # Services
+       # Services
        - "traefik.http.services.catapp-secure.loadbalancer.server.port=5000"
-  # Middleware BasicAuth
+       # Middleware BasicAuth
        - "traefik.http.middlewares.test-auth.basicauth.users=traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.,user2:$$apr1$$XDrP1Fb1$$SZqSEjvNYW44vgJgI3iEP0"
-       # user1: traefik password: training
-       # user2: user2 password: test123
        # Create hash password -> echo $(htpasswd -nb user2 test123) | sed -e s/\\$/\\$\\$/g
-  # Compress Middleware
+       # Compress Middleware
        - "traefik.http.middlewares.test-compress.compress=true"
-  # Error Pages Middleware
+       # Error Pages Middleware
        - "traefik.http.middlewares.test-errorpages.errors.status=400-599"
        - "traefik.http.middlewares.test-errorpages.errors.service=error"
        - "traefik.http.middlewares.test-errorpages.errors.query=/{status}.html"
-  # Rate Limit Middleware
+       # Rate Limit Middleware
        - "traefik.http.middlewares.test-ratelimit.ratelimit.average=2"
-  # Redirect Scheme HTTP -> HTTPS
+       # Redirect Scheme HTTP -> HTTPS
        - "traefik.http.middlewares.test-redirectscheme.redirectscheme.scheme=https"
        - "traefik.http.middlewares.test-redirectscheme.redirectscheme.permanent=true"
 
-  # Error Page service
+       # Error Page service
   error:
     image: guillaumebriday/traefik-custom-error-pages
     labels:
@@ -37,3 +43,10 @@
           - "traefik.http.services.error.loadbalancer.server.port=80"
           # - traefik.frontend.rule=PathPrefixStrip:/wait
           - "traefik.http.routers.error.entrypoints=web"
+
+      #- "traefik.http.services.whoami.loadbalancer.server.port=5000" # You choose which port should be used by traefik to pass the requests
+     networks:
+      - traefiknet
+networks:
+  traefiknet:
+    external: true
