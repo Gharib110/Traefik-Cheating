@@ -12,7 +12,7 @@ services:
       - "traefik.http.routers.whoami.entrypoints=websecure"
       # Force TLS
       - "traefik.http.routers.whoami.tls=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.tls.docker.localhost`)"
+      - "traefik.http.routers.whoami.rule=Host(`whoamitlstraefik.example2.com`)"
       #- "traefik.http.services.whoami.loadbalancer.server.port=5000" # You choose which port should be used by traefik to pass the requests
      networks:
       - traefiknet
