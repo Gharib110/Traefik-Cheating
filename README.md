@@ -21,3 +21,7 @@ Traefik Cheating in Writing Configuration Files
 - But before it you should run traefik with docker-compose
 - This is just a sample container which helps us to test the traefik well
 - Just Run the docker-compose, but before it edit the `` networks  `` section
+
+## User-Defined TLS
+- Use the traefik.tls.yml file and put it int othe `` /opt/traefik/dynamic ``. IT is mapped to `` /etc/traefik/dynamic `` in the docker container
+- Also 
