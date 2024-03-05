@@ -132,6 +132,8 @@ ping:
 ################################################################
 
 providers:
+  file:
+    directory: /etc/traefik/dynamic # we add file provider and specify the dynamic confs directory
   # Enable Docker configuration backend
   docker:
     # Docker server endpoint. Can be a tcp or a unix socket endpoint.
